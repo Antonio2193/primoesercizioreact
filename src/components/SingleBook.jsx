@@ -15,7 +15,6 @@ const handleClick = () => {
                      <Card.Body>
                        <Card.Title>{book.title}</Card.Title>
                        <Card.Text>{book.price}€</Card.Text>
-                       <Card.Text>{book.category}</Card.Text>
                      </Card.Body>
                    </Card>
     )
