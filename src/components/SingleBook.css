@@ -14,3 +14,7 @@
     width: 280px;
     height: 350px;
 }
+
+.redBorder {
+    border: 3px solid red !important;
+}
