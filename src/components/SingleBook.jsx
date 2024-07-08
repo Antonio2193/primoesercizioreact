@@ -1,22 +1,25 @@
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
-import './SingleBook.css'
-import { useState } from 'react';
+import CommentArea from './CommentArea';
+import './SingleBook.css';
 
-function SingleBook ({book}){
-const [border,setBorder] = useState(false);
-const handleClick = () => {
-  setBorder(!border);
+function SingleBook({ book }) {
+  const [selected, setSelected] = useState(false);
+
+  const handleClick = () => {
+    setSelected(!selected);
+  };
+
+  return (
+    <Card className={selected ? "redBorder bookCard" : "bookCard"} style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={book.img} onClick={handleClick} />
+      <Card.Body>
+        <Card.Title>{book.title}</Card.Title>
+        <Card.Text>{book.price}€</Card.Text>
+        {selected && <CommentArea asin={book.asin} />}
+      </Card.Body>
+    </Card>
+  );
 }
 
-
-    return(
-        <Card className={border ? "redBorder bookCard" : "bookCard"} style={{ width: '18rem' }} onClick={handleClick}>
-                     <Card.Img variant="top" className=" copertine" src={book.img}/>
-                     <Card.Body>
-                       <Card.Title>{book.title}</Card.Title>
-                       <Card.Text>{book.price}€</Card.Text>
-                     </Card.Body>
-                   </Card>
-    )
-}
 export default SingleBook;
