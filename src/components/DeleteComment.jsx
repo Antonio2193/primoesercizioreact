@@ -1,7 +1,11 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+import { useState } from 'react';
 
 function DeleteComment({ commentId, onDelete }) {
+  const [showError, setShowError] = useState(false); // Stato per gestire la visibilità dell'alert di errore
+
   const handleDelete = async () => {
     try {
       const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${commentId}`, {
@@ -13,17 +17,36 @@ function DeleteComment({ commentId, onDelete }) {
       if (response.ok) {
         onDelete(commentId); // Chiamiamo la funzione onDelete passando l'ID del commento eliminato
       } else {
-        console.error('Failed to delete comment');
+        setShowError(true); // Mostra l'alert di errore se la cancellazione fallisce
       }
     } catch (error) {
-      console.error('Error deleting comment:', error);
+      setShowError(true); // Mostra l'alert di errore se si verifica un errore durante la cancellazione
     }
   };
 
+  // Funzione per chiudere l'alert di errore
+  const handleCloseErrorAlert = () => {
+    setShowError(false);
+  };
+
   return (
-    <Button variant="danger" onClick={handleDelete}>
-      Delete
-    </Button>
+    <>
+      {/* Alert di errore */}
+      <Alert
+        variant="danger"
+        onClose={handleCloseErrorAlert}
+        dismissible
+        show={showError}
+      >
+        <Alert.Heading>Error!</Alert.Heading>
+        <p>Failed to delete comment. Please try again later.</p>
+      </Alert>
+
+      {/* Pulsante di eliminazione */}
+      <Button variant="danger" onClick={handleDelete}>
+        Delete
+      </Button>
+    </>
   );
 }
 

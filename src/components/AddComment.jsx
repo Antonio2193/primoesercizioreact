@@ -1,6 +1,7 @@
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
 
 function AddComment({ asin, addedComment }) {
   const initialFormState = {
@@ -10,6 +11,7 @@ function AddComment({ asin, addedComment }) {
   };
 
   const [formValue, setFormValue] = useState(initialFormState);
+  const [showError, setShowError] = useState(false); // State per gestire la visibilità dell'alert di errore
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -36,40 +38,51 @@ function AddComment({ asin, addedComment }) {
       addedComment();
       setFormValue(initialFormState); // Reset the form
     } else {
-      // Handle errors if needed
-      console.error("Failed to save comment");
+      setShowError(true); // Mostra l'alert di errore
     }
   };
 
   return (
-    <Form>
-      <Form.Group controlId="rate">
-        <Form.Label>Rate</Form.Label>
-        <Form.Control
-          type="number"
-          placeholder="Rate"
-          min="1"
-          max="5"
-          name="rate"
-          value={formValue.rate}
-          onChange={handleChange}
-        />
-      </Form.Group>
-      <Form.Group controlId="comment">
-        <Form.Label>Comment</Form.Label>
-        <Form.Control
-          as="textarea"
-          rows={3}
-          placeholder="Comment here"
-          name="comment"
-          value={formValue.comment}
-          onChange={handleChange}
-        />
-      </Form.Group>
-      <Button variant="primary" onClick={handleSaveComment}>
-        Submit form
-      </Button>
-    </Form>
+    <>
+      {/* Alert di errore */}
+      <Alert
+        variant="danger"
+        onClose={() => setShowError(false)}
+        dismissible
+        show={showError}
+      >
+        <Alert.Heading>Error!</Alert.Heading>
+        <p>Failed to save comment. Please try again.</p>
+      </Alert>
+      <Form>
+        <Form.Group controlId="rate">
+          <Form.Label>Rate</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Rate"
+            min="1"
+            max="5"
+            name="rate"
+            value={formValue.rate}
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="comment">
+          <Form.Label>Comment</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            placeholder="Comment here"
+            name="comment"
+            value={formValue.comment}
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Button variant="primary" onClick={handleSaveComment}>
+          Submit form
+        </Button>
+      </Form>
+    </>
   );
 }
 
