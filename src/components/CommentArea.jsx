@@ -45,6 +45,15 @@ function CommentArea({ asin }) {
     fetchComments();
   };
 
+  // Funzione per aggiornare i commenti dopo la modifica di un commento
+  const handleUpdateComment = (updatedComment) => {
+    setComments(prevComments =>
+      prevComments.map(comment =>
+        comment._id === updatedComment._id ? updatedComment : comment
+      )
+    );
+  };
+
   return (
     <div>
       {/* Alert di errore */}
@@ -62,7 +71,7 @@ function CommentArea({ asin }) {
       <AddComment asin={asin} addedComment={handleAddedComment} />
 
       {/* Componente CommentList */}
-      <CommentList comments={comments} onDelete={handleDeleteComment} />
+      <CommentList comments={comments} onDelete={handleDeleteComment} onPut={handleUpdateComment} />
     </div>
   );
 }
