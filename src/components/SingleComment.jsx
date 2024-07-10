@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
+import React, { useState } from "react";
+import ListGroup from "react-bootstrap/ListGroup";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 
 function SingleComment({ comment, onDelete, onPut }) {
   const [showError, setShowError] = useState(false); // Stato per gestire la visibilità dell'alert di errore
@@ -12,12 +12,16 @@ function SingleComment({ comment, onDelete, onPut }) {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${comment._id}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhhZDA0ZmQzOTNmYzAwMTU5NzQwMTAiLCJpYXQiOjE3MjAzNzMzMjcsImV4cCI6MTcyMTU4MjkyN30.nVYiXy0ac-ROcPM0XP4uJAjgV7SUi6kuJ84FzQsY9GU",
-        },
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/comments/${comment._id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhhZDA0ZmQzOTNmYzAwMTU5NzQwMTAiLCJpYXQiOjE3MjAzNzMzMjcsImV4cCI6MTcyMTU4MjkyN30.nVYiXy0ac-ROcPM0XP4uJAjgV7SUi6kuJ84FzQsY9GU",
+          },
+        }
+      );
       if (response.ok) {
         onDelete(comment._id); // Chiamiamo la funzione onDelete passando l'ID del commento eliminato
       } else {
@@ -31,14 +35,18 @@ function SingleComment({ comment, onDelete, onPut }) {
   const handlePut = async () => {
     const updatedComment = { ...comment, comment: newComment, rate: newRate }; // Dati aggiornati da inviare
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${comment._id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhhZDA0ZmQzOTNmYzAwMTU5NzQwMTAiLCJpYXQiOjE3MjAzNzMzMjcsImV4cCI6MTcyMTU4MjkyN30.nVYiXy0ac-ROcPM0XP4uJAjgV7SUi6kuJ84FzQsY9GU",
-        },
-        body: JSON.stringify(updatedComment),
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/comments/${comment._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhhZDA0ZmQzOTNmYzAwMTU5NzQwMTAiLCJpYXQiOjE3MjAzNzMzMjcsImV4cCI6MTcyMTU4MjkyN30.nVYiXy0ac-ROcPM0XP4uJAjgV7SUi6kuJ84FzQsY9GU",
+          },
+          body: JSON.stringify(updatedComment),
+        }
+      );
       if (response.ok) {
         onPut(updatedComment); // Chiamiamo la funzione onPut passando il commento aggiornato
         setIsEditing(false); // Esci dalla modalità di modifica
@@ -62,18 +70,18 @@ function SingleComment({ comment, onDelete, onPut }) {
           <Form>
             <Form.Group controlId="formComment">
               <Form.Label>Comment</Form.Label>
-              <Form.Control 
-                type="text" 
-                value={newComment} 
-                onChange={(e) => setNewComment(e.target.value)} 
+              <Form.Control
+                type="text"
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
               />
             </Form.Group>
             <Form.Group controlId="formRate">
               <Form.Label>Rate</Form.Label>
-              <Form.Control 
-                type="number" 
-                value={newRate} 
-                onChange={(e) => setNewRate(e.target.value)} 
+              <Form.Control
+                type="number"
+                value={newRate}
+                onChange={(e) => setNewRate(e.target.value)}
               />
             </Form.Group>
             <Button variant="primary" onClick={handlePut}>
@@ -88,8 +96,16 @@ function SingleComment({ comment, onDelete, onPut }) {
             <p>Rate: {comment.rate}</p>
             <p>Comment: {comment.comment}</p>
             <p>Author: {comment.author}</p>
-            <Button variant="primary" onClick={() => setIsEditing(true)}>
+            <Button variant="primary" onClick={() => setIsEditing(true)} style={{marginRight: "10px"}}>
               Modify
+            </Button>
+            {/* Pulsante di eliminazione */}
+            <Button
+              variant="danger"
+              onClick={handleDelete}
+              style={{ display: "inline" }}
+            >
+              Delete
             </Button>
           </>
         )}
@@ -105,11 +121,6 @@ function SingleComment({ comment, onDelete, onPut }) {
           <Alert.Heading>Error!</Alert.Heading>
           <p>Failed to delete or modify the comment. Please try again later.</p>
         </Alert>
-
-        {/* Pulsante di eliminazione */}
-        <Button variant="danger" onClick={handleDelete}>
-          Delete
-        </Button>
       </ListGroup.Item>
     </ListGroup>
   );

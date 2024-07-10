@@ -3,6 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import './MyNav.css'
 
 function MyNav({search,handleSearch}) {
     return (
@@ -17,7 +18,7 @@ function MyNav({search,handleSearch}) {
             <Nav.Link href="#link">Aboutk</Nav.Link>
             <Nav.Link href="#link">Browse</Nav.Link>
           </Nav>
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-1 barraRicerca">
         <Form.Control
           placeholder="Search for a book"
           value = {search}
