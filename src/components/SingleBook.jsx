@@ -3,9 +3,12 @@ import Card from 'react-bootstrap/Card';
 import CommentArea from './CommentArea';
 import './SingleBook.css';
 
+//Funzione che gestisce la visualizzazione di un singolo libro passando il parametro book all'interno della funzione
 function SingleBook({ book }) {
+  // Stato per gestire la visualizzazione di un singolo libro
   const [selected, setSelected] = useState(false);
 
+  // Funzione per gestire la visualizzazione di un singolo libro 
   const handleClick = () => {
     setSelected(!selected);
   };

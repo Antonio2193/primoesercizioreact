@@ -1,6 +1,6 @@
 import SingleBook from "./SingleBook";
 
-function AllTheBooks({ books }) {
+function AllTheBooks({ books }) { // funzione che restituisce la lista di libri passando il parametro books all'interno della funzione 
 
   return (
     <main className="mx-2">

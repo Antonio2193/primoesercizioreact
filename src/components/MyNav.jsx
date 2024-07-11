@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import './MyNav.css'
 
+// Funzione che gestisce la barra di ricerca passando il parametro search e handleSearch all'interno della funzione 
 function MyNav({search,handleSearch}) {
     return (
         <>

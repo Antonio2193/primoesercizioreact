@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 
+
+// Funzione che restituisce un singolo commento passando il parametro comment all'interno della funzione 
 function SingleComment({ comment, onDelete, onPut }) {
   const [showError, setShowError] = useState(false); // Stato per gestire la visibilità dell'alert di errore
   const [isEditing, setIsEditing] = useState(false); // Stato per gestire la modalità di modifica
@@ -32,6 +34,7 @@ function SingleComment({ comment, onDelete, onPut }) {
     }
   };
 
+  // Funzione per modificare un commento passando il parametro comment all'interno della funzione 
   const handlePut = async () => {
     const updatedComment = { ...comment, comment: newComment, rate: newRate }; // Dati aggiornati da inviare
     try {
@@ -73,7 +76,7 @@ function SingleComment({ comment, onDelete, onPut }) {
               <Form.Control
                 type="text"
                 value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
+                onChange={(e) => setNewComment(e.target.value)} 
               />
             </Form.Group>
             <Form.Group controlId="formRate">

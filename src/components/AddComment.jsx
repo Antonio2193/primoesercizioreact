@@ -10,10 +10,10 @@ function AddComment({ asin, addedComment }) {
     elementId: asin,
   };
 
-  const [formValue, setFormValue] = useState(initialFormState);
+  const [formValue, setFormValue] = useState(initialFormState); // State per memorizzare i valori del form
   const [showError, setShowError] = useState(false); // State per gestire la visibilità dell'alert di errore
 
-  const handleChange = (event) => {
+  const handleChange = (event) => { // Funzione per gestire il cambiamento del valore del form
     const { name, value } = event.target;
     setFormValue({
       ...formValue,
@@ -36,7 +36,7 @@ function AddComment({ asin, addedComment }) {
     );
     if (response.ok) {
       addedComment();
-      setFormValue(initialFormState); // Reset the form
+      setFormValue(initialFormState);  // Reset del form
     } else {
       setShowError(true); // Mostra l'alert di errore
     }
@@ -67,7 +67,7 @@ function AddComment({ asin, addedComment }) {
             onChange={handleChange}
           />
         </Form.Group>
-        <Form.Group controlId="comment">
+        <Form.Group controlId="comment"> 
           <Form.Label>Comment</Form.Label>
           <Form.Control
             as="textarea"

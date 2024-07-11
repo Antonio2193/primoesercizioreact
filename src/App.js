@@ -6,20 +6,20 @@ import MyNav from "./components/MyNav";
 import Welcome from "./components/Welcome";
 
 function App() {
-  const [search,setSearch] = useState('');
-  const [filteredBooks,setFilteredBooks] = useState(books);
+  const [search,setSearch] = useState(''); // Stato per memorizzare il valore della barra di ricerca
+  const [filteredBooks,setFilteredBooks] = useState(books); // Stato per memorizzare i libri filtrati dal valore della barra di ricerca 
 
+  // Funzione che gestisce la barra di ricerca passando il parametro search e handleSearch all'interno della funzione
   const handleSearch = (e) => {
     setSearch(e.target.value);
-    const filtered = books.filter((b) => b.title.toLowerCase().includes(e.target.value.toLowerCase()));
-    setFilteredBooks(filtered);
+    const filtered = books.filter((b) => b.title.toLowerCase().includes(e.target.value.toLowerCase())); // Filtra i libri in base al valore della barra di ricerca
+    setFilteredBooks(filtered); // Aggiorna i libri filtrati
 }
 
   return (
     <div>
-      <MyNav search = {search} handleSearch = {handleSearch} />
-      <Welcome />
-      <AllTheBooks books = {filteredBooks}/>
+      <MyNav search = {search} handleSearch = {handleSearch} /> {/* Passa il valore della barra di ricerca e la funzione handleSearch all'interno del componente MyNav */}
+      <AllTheBooks books = {filteredBooks}/> {/* Passa i libri filtrati all'interno del componente AllTheBooks */}
       <MyFooter />
     </div>
   );

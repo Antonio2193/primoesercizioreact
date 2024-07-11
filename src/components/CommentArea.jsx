@@ -4,7 +4,7 @@ import CommentList from './CommentList';
 import Alert from 'react-bootstrap/Alert';
 
 function CommentArea({ asin }) {
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState([]); // Stato per memorizzare i commenti
   const [showError, setShowError] = useState(false); // Stato per gestire la visibilità dell'alert di errore
 
   // Funzione per recuperare i commenti dal server
@@ -31,7 +31,8 @@ function CommentArea({ asin }) {
     fetchComments();
   }, [asin]);
 
-  const handleCloseErrorAlert = () => {
+  // Funzione per chiudere l'alert di errore
+  const handleCloseErrorAlert = () => { 
     setShowError(false);
   };
 

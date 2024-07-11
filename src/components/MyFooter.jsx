@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col';
 import './MyFooter.css'
 import { Container } from 'react-bootstrap';
 
+// Funzione che restituisce il footer
 function MyFooter(){
     return(
         <Container fluid className='footer mt-3 mb-0'>
