@@ -72,7 +72,7 @@ function CommentArea({ asin }) {
       <AddComment asin={asin} addedComment={handleAddedComment} />
 
       {/* Componente CommentList */}
-      <CommentList comments={comments} onDelete={handleDeleteComment} onPut={handleUpdateComment} />
+      <CommentList comments={comments} onDelete={handleDeleteComment} onPut={handleUpdateComment} addedComment={handleAddedComment}/>
     </div>
   );
 }

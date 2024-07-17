@@ -2,6 +2,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './MyFooter.css'
 import { Container } from 'react-bootstrap';
+import {ThemeContext} from "../context/ThemeContextProvider";
+import { useContext } from 'react';
 
 // Funzione che restituisce il footer
 function MyFooter(){
