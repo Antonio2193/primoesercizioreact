@@ -14,7 +14,7 @@ function SingleBook({ book, selected, handleClick }) {
 
   return (
     <Card className={theme === 'light' ? 'bookCard' : 'bg-dark bookCard'} style={{ width: '18rem' }}>
-      <Card.Img className={selected === book.asin ? "redBorder bookCard copertine" : "bookCard copertine"} variant="top" src={book.img} onClick={() => handleClick(book.asin)} />
+      <Card.Img className={selected === book.asin ? "redBorder copertine" : "copertine"} variant="top" src={book.img} onClick={() => handleClick(book.asin)} />
       <Card.Body className='d-flex flex-column justify-content-between'>
         <Card.Title>{book.title}</Card.Title>
         <Card.Text>{book.price}€</Card.Text>
