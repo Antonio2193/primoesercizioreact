@@ -9,10 +9,12 @@ import { useContext } from 'react';
 //Funzione che gestisce la visualizzazione di un singolo libro passando il parametro book all'interno della funzione
 function SingleBook({ book, selected, handleClick }) {
 
+  const { theme } = useContext(ThemeContext);
+
 
   return (
-    <Card className={selected === book.asin ? "redBorder bookCard" : "bookCard"} style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={book.img} onClick={() => handleClick(book.asin)} />
+    <Card className={theme === 'light' ? 'bookCard' : 'bg-dark bookCard'} style={{ width: '18rem' }}>
+      <Card.Img className={selected === book.asin ? "redBorder bookCard copertine" : "bookCard copertine"} variant="top" src={book.img} onClick={() => handleClick(book.asin)} />
       <Card.Body className='d-flex flex-column justify-content-between'>
         <Card.Title>{book.title}</Card.Title>
         <Card.Text>{book.price}€</Card.Text>
