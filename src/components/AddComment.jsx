@@ -78,7 +78,7 @@ function AddComment({ asin, addedComment }) {
             onChange={handleChange}
           />
         </Form.Group>
-        <Button variant="primary" onClick={handleSaveComment}>
+        <Button className="mt-3 mb-3" variant="primary" onClick={handleSaveComment}>
           Submit form
         </Button>
       </Form>

@@ -28,7 +28,7 @@ function AllTheBooks({ books }) {
     };
 
   return (
-    <main className={theme === 'light' ? 'mx-2' : 'bg-dark mx-2'} data-bs-theme={theme}>
+    <main className={theme === 'light' ? 'mx-2' : 'bg-dark'} data-bs-theme={theme}>
       <h3 className="text-center text-primary">Book List:</h3>
       <Container>
         <Row>

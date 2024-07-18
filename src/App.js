@@ -7,9 +7,7 @@ import Welcome from "./components/Welcome";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import BookDetails from "./pages/BookDetails";
-import ThemeContextProvider  from "./context/ThemeContextProvider";
-
-
+import ThemeContextProvider from "./context/ThemeContextProvider";
 
 function App() {
   const [search, setSearch] = useState(''); // Stato per memorizzare il valore della barra di ricerca
@@ -37,7 +35,6 @@ function App() {
           <MyFooter />
         </div>
       </ThemeContextProvider>
-
     </BrowserRouter>
   );
 }
