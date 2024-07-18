@@ -1,8 +1,7 @@
 import { useParams } from 'react-router-dom';
-import { Card, Container, Row, Col, Button } from 'react-bootstrap';
+import { Card, Container, Row, Col } from 'react-bootstrap';
 import { books } from '../data/books';
 import CommentArea from '../components/CommentArea';
-import { Link } from 'react-router-dom';
 import { ThemeContext } from "../context/ThemeContextProvider";
 import { useContext, useEffect } from "react";
 
