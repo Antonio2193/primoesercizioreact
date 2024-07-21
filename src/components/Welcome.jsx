@@ -25,7 +25,7 @@ function Welcome() {
             theme === "light" ? "text-center" : "text-center text-light bg-dark"
           }
         >
-          Welcome to EPIBOOKS Bookstore!
+          <h4>Welcome to EPIBOOKS Bookstore!</h4>
         </Alert.Heading>{" "}
         {/* Testo del messaggio */}
       </Alert>

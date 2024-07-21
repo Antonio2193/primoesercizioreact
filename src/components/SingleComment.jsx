@@ -67,7 +67,7 @@ function SingleComment({ comment, onDelete, onPut }) {
   };
 
   return (
-    <ListGroup>
+    <ListGroup data-testid="comment">
       <ListGroup.Item>
         {isEditing ? (
           <Form>
