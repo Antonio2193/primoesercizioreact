@@ -12,7 +12,7 @@ function CommentArea({ asin }) {
     try {
       const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${asin}`, {
         headers: {
-          Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhhZDA0ZmQzOTNmYzAwMTU5NzQwMTAiLCJpYXQiOjE3MjAzNzMzMjcsImV4cCI6MTcyMTU4MjkyN30.nVYiXy0ac-ROcPM0XP4uJAjgV7SUi6kuJ84FzQsY9GU",
+         "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjllM2ExZTA5OWJlMjAwMTU5MWNjMDkiLCJpYXQiOjE3MjE2NDU1OTgsImV4cCI6MTcyMjg1NTE5OH0.liPVPxJnB45bjc_fBQUvw8nNwLUglNQSvfC4nNls8h0",
         },
       });
       if (response.ok) {

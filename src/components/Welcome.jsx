@@ -25,7 +25,7 @@ function Welcome() {
             theme === "light" ? "text-center" : "text-center text-light bg-dark"
           }
         >
-          <h4>Welcome to EPIBOOKS Bookstore!</h4>
+          <h4>Welcome to myHORROR Bookstore!</h4>
         </Alert.Heading>{" "}
         {/* Testo del messaggio */}
       </Alert>
